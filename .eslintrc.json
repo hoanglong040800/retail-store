@@ -12,5 +12,11 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "rules": {}
+  "rules": {
+    "complexity": ["error", 3],
+    "eqeqeq": "error",
+    "no-unused-vars": "error",
+    "no-useless-rename": "error",
+    "no-var": "error"
+  }
 }
