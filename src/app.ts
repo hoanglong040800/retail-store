@@ -1,11 +1,11 @@
 import express from "express";
 import { ENV } from "./constants";
-import { appRouter } from "./routes";
+import appRoutes from "./app.routes";
 
 const app = express();
 const port = ENV.server.port;
 
-appRouter(app);
+appRoutes(app);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
