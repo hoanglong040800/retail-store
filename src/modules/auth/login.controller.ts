@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-export const LoginController = (_: Request, res: Response) => {
+export const loginController = (_: Request, res: Response) => {
   try {
     // check email
     // check password
