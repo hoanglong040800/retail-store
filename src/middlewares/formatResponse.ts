@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from "express";
 export const formatResponse = (
   _: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   res.sendResponse = (data, status = 200, message?: string) =>
     res.status(status).json({

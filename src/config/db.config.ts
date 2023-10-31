@@ -6,7 +6,7 @@ export const db = new DataSource({
   ...ENV.db,
 
   // settings
-  synchronize: true,
+  synchronize: false,
   logging: false,
   extra: {
     trustServerCertificate: true,
