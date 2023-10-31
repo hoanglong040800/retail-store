@@ -10,8 +10,10 @@
       "entities/*": ["entities/*"],
       "utils/*": ["utils/*"],
       "constants/*": ["constants/*"],
-      "modules/*": ["modules/*"]
+      "modules/*": ["modules/*"],
+      "interfaces/*": ["interfaces/*"]
     },
+    "types": ["node", "express", "./src/interfaces/express.d.ts"],
 
     "strict": true,
 

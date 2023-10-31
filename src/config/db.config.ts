@@ -1,4 +1,3 @@
-import { UserEntity } from "entities";
 import { ENV } from "constant";
 import { DataSource } from "typeorm";
 
@@ -14,17 +13,15 @@ export const db = new DataSource({
   },
 
   // related
-  entities: [UserEntity],
+  entities: ["src/entities/*.entity.ts"],
+  migrations: ["src/migrations/**/*.ts"],
   subscribers: [],
-  migrations: [],
 });
 
-export const connectDb = (callbackFn: () => void) => {
+export const connectDb = () => {
   db.initialize()
     .then(() => {
       console.log("[Database] Connected to database");
-
-      callbackFn();
     })
     .catch((err) => {
       console.error("[Database] Error when connecting");

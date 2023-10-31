@@ -1,15 +1,29 @@
 import express from "express";
-import { ENV } from "./constant";
-import appRoutes from "./app.routes";
-import { connectDb } from "./config";
+
+import { connectDb } from "config";
+import bodyParser from "body-parser";
+import appRoutes from "app.routes";
+import { ENV } from "constant";
+import { formatResponse } from "middlewares";
 
 const app = express();
 const port = ENV.server.port;
 
+// parse body json -> object
+app.use(bodyParser.json());
+
+// parse complex nested object & array data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse response to structure format
+app.use(formatResponse);
+
+// apply all api routes
 appRoutes(app);
 
-connectDb(() => {
-  app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-  });
+// connect to database. it is async fn
+connectDb();
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
