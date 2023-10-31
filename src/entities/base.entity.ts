@@ -4,6 +4,7 @@ export abstract class EBase {
   @Column({
     name: "created_at",
     type: "datetime",
+    nullable: true,
   })
   createdAt: Date;
 
@@ -24,6 +25,7 @@ export abstract class EBase {
   @Column({
     name: "updated_by",
     type: "uuid",
+    nullable: true,
   })
   updatedBy: string;
 
