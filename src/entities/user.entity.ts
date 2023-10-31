@@ -16,14 +16,14 @@ export class EUser extends EBase {
     type: "varchar",
     length: 50,
   })
-  firstName: string;
+  firstName?: string;
 
   @Column({
     name: "last_name",
     type: "varchar",
     length: 50,
   })
-  lastName: string;
+  lastName?: string;
 
   @Column({
     name: "password",

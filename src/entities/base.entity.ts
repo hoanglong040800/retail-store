@@ -4,7 +4,7 @@ export abstract class EBase {
   @Column({
     name: "created_at",
     type: "datetime",
-    nullable: true,
+    default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
 
@@ -18,7 +18,7 @@ export abstract class EBase {
   @Column({
     name: "updated_at",
     type: "datetime",
-    nullable: true,
+    default: () => "CURRENT_TIMESTAMP",
   })
   updatedAt: Date;
 

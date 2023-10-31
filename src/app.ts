@@ -4,6 +4,7 @@ import { connectDb } from "config";
 import bodyParser from "body-parser";
 import appRoutes from "app.routes";
 import { ENV } from "constant";
+import { formatResponse } from "middlewares";
 
 const app = express();
 const port = ENV.server.port;
@@ -13,6 +14,9 @@ app.use(bodyParser.json());
 
 // parse complex nested object & array data
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse response to structure format
+app.use(formatResponse);
 
 // apply all api routes
 appRoutes(app);
