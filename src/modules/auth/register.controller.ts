@@ -2,6 +2,7 @@ import { EUser } from "entities/user.entity";
 import { Request, Response } from "express";
 import { checkUserExist } from ".";
 import { userRepo } from "modules/users";
+import { encryptString } from "utils/crypt.utils";
 
 interface IReq extends Request {
   body: Pick<EUser, "email" | "password" | "firstName" | "lastName">;
@@ -14,13 +15,13 @@ export const registerController = async (req: IReq, res: Response) => {
 
     await checkUserExist(email);
 
-    const newUser = await userRepo.save({
+    await userRepo.save({
       ...req.body,
-      password,
+      password: encryptString(password),
     });
 
-    res.sendResponse(newUser);
+    res.sendResponse(true);
   } catch (e) {
-    res.sendResponse(500);
+    res.sendResponse(null, 500);
   }
 };

@@ -30,6 +30,7 @@ export class EUser extends EBase {
     type: "varchar",
     length: 100,
     nullable: false,
+    select: false,
   })
   password: string;
 }
