@@ -6,7 +6,7 @@
     "moduleResolution": "NodeNext",
     "baseUrl": "./src",
     "outDir": "./dist",
-    "types": ["node", "express", "./src/interfaces/express-response.d.ts"],
+    "types": ["node", "express", "./src/interfaces/express.d.ts"],
 
     "strict": true,
 
