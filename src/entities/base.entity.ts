@@ -32,5 +32,5 @@ export abstract class EBase {
   @PrimaryGeneratedColumn("uuid", {
     name: "id",
   })
-  id: number;
+  id: string;
 }

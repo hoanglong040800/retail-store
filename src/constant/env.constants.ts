@@ -14,4 +14,8 @@ export const ENV = {
     password: process.env.DB_PW,
     database: process.env.DB_NAME,
   },
+
+  jwt: {
+    secret: process.env.JWT_ACCESS_TOKEN_SECRET || "",
+  },
 };

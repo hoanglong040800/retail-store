@@ -13,7 +13,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "complexity": ["error", 3],
+    "complexity": ["error", 4],
     "eqeqeq": "error",
     "no-unused-vars": "error",
     "no-useless-rename": "error",

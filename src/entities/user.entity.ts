@@ -33,4 +33,13 @@ export class EUser extends EBase {
     select: false,
   })
   password: string;
+
+  @Column({
+    name: "refresh_token",
+    type: "varchar",
+    length: 128,
+    nullable: true,
+    select: false,
+  })
+  refreshToken?: string;
 }
