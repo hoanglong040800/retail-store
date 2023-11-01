@@ -1,6 +1,7 @@
-import { ENV } from "constant";
+import { JWT_TOKEN } from "constant";
 import { EUser } from "entities";
-import { sign } from "jsonwebtoken";
+import { IJwtPayload } from "interfaces";
+import { sign, verify } from "jsonwebtoken";
 import { userRepo } from "modules/users";
 
 export const checkUserExist = async (email: string) => {
@@ -25,24 +26,18 @@ export const genJwtToken = (
 
   delete user.password;
 
-  let token = {
-    secret: "",
-    expire: "",
-  };
-
-  switch (type) {
-    case "access":
-      token = ENV.jwt.access;
-      break;
-
-    case "refresh":
-      token = ENV.jwt.refresh;
-      break;
-  }
+  const token = JWT_TOKEN[type];
 
   return sign({ user }, token.secret, {
     expiresIn: token.expire,
   });
+};
+
+export const verifyJwtToken = (
+  token: string,
+  type: "access" | "refresh",
+): IJwtPayload => {
+  return verify(token, JWT_TOKEN[type].secret) as IJwtPayload;
 };
 
 export const genRefreshToken = async (userId: string): Promise<string> => {
