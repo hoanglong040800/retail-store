@@ -16,6 +16,7 @@ export const ENV = {
   },
 
   jwt: {
-    secret: process.env.JWT_ACCESS_TOKEN_SECRET || "",
+    accessSecret: process.env.JWT_ACCESS_TOKEN_SECRET || "",
+    refreshSecret: process.env.REFRESH_TOKEN_SECRET || "",
   },
 };

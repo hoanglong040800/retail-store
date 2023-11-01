@@ -1,8 +1,7 @@
-import { ENV, JWT_TOKEN_LIFE } from "constant";
+import { ACCESS_TOKEN_LIFE, ENV, REFRESH_TOKEN_LIFE } from "constant";
 import { EUser } from "entities";
 import { sign } from "jsonwebtoken";
 import { userRepo } from "modules/users";
-import { genRandomHexToken } from "utils/crypt.utils";
 
 export const checkUserExist = async (email: string) => {
   const user = await userRepo.findOne({
@@ -16,15 +15,33 @@ export const checkUserExist = async (email: string) => {
   }
 };
 
-export const genJwtAccessToken = (user: EUser) => {
-  return sign({ user }, ENV.jwt.secret, {
+export const genJwtToken = (
+  user: Partial<EUser>,
+  type: "access" | "refresh",
+) => {
+  let secret: string;
+  let tokenLife: string;
+
+  switch (type) {
+    case "access":
+      secret = ENV.jwt.accessSecret;
+      tokenLife = ACCESS_TOKEN_LIFE;
+      break;
+
+    case "refresh":
+      secret = ENV.jwt.refreshSecret;
+      tokenLife = REFRESH_TOKEN_LIFE;
+      break;
+  }
+
+  return sign({ user }, secret, {
     algorithm: "HS256",
-    expiresIn: JWT_TOKEN_LIFE,
+    expiresIn: tokenLife,
   });
 };
 
 export const genRefreshToken = async (userId: string): Promise<string> => {
-  const refreshToken = genRandomHexToken();
+  const refreshToken = genJwtToken({ id: userId }, "refresh");
 
   await userRepo.save({ id: userId, refreshToken });
 

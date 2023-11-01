@@ -8,8 +8,8 @@ export const formatResponse = (
 ): void => {
   res.sendResponse = (data, status = 200, message?: string) =>
     res.status(status).json({
-      status,
       data,
+      status,
       message: message || mapHttpCodeToMsg[status],
     });
 

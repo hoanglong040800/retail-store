@@ -37,7 +37,7 @@ export class EUser extends EBase {
   @Column({
     name: "refresh_token",
     type: "varchar",
-    length: 128,
+    length: 200,
     nullable: true,
     select: false,
   })

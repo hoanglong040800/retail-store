@@ -2,7 +2,7 @@ import { compareSync } from "bcrypt";
 import { EUser } from "entities/user.entity";
 import { Request, Response } from "express";
 import { userRepo } from "modules/users";
-import { genJwtAccessToken, genRefreshToken } from ".";
+import { genJwtToken, genRefreshToken } from ".";
 
 interface IReq extends Request {
   body: Pick<EUser, "email" | "password">;
@@ -28,7 +28,7 @@ export const loginController = async (req: IReq, res: Response) => {
       return res.sendResponse(null, 400, "Password is not correct");
     }
 
-    const accessToken = genJwtAccessToken(user);
+    const accessToken = genJwtToken(user, "access");
     const refreshToken = await genRefreshToken(user.id);
 
     res.sendResponse({ accessToken, refreshToken });
