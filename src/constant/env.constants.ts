@@ -14,4 +14,16 @@ export const ENV = {
     password: process.env.DB_PW,
     database: process.env.DB_NAME,
   },
+
+  jwt: {
+    access: {
+      secret: process.env.ACCESS_SECRET || "",
+      expire: process.env.ACCESS_EXPIRATION_TIME || "10m",
+    },
+
+    refresh: {
+      secret: process.env.REFRESH_SECRET || "",
+      expire: process.env.REFRESH_EXPIRATION_TIME || "30d",
+    },
+  },
 };

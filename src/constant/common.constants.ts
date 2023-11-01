@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 export const mapHttpCodeToMsg: { [key in number]: string } = {
   [200]: "Success",
   [401]: "Unauthorize",
