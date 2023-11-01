@@ -1,8 +1,13 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare namespace Express {
   interface Response {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     sendResponse: (data: any, status?: number, message?: string) => void;
   }
+
+  interface Request {
+    context: any;
+  }
 }
+/* eslint-enable @typescript-eslint/no-explicit-any */
 /* eslint-enable no-unused-vars */

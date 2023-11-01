@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_LIFE, ENV, REFRESH_TOKEN_LIFE } from "constant";
+import { ENV } from "constant";
 import { EUser } from "entities";
 import { sign } from "jsonwebtoken";
 import { userRepo } from "modules/users";
@@ -18,25 +18,30 @@ export const checkUserExist = async (email: string) => {
 export const genJwtToken = (
   user: Partial<EUser>,
   type: "access" | "refresh",
-) => {
-  let secret: string;
-  let tokenLife: string;
+): string => {
+  if (!user) {
+    return "";
+  }
+
+  delete user.password;
+
+  let token = {
+    secret: "",
+    expire: "",
+  };
 
   switch (type) {
     case "access":
-      secret = ENV.jwt.accessSecret;
-      tokenLife = ACCESS_TOKEN_LIFE;
+      token = ENV.jwt.access;
       break;
 
     case "refresh":
-      secret = ENV.jwt.refreshSecret;
-      tokenLife = REFRESH_TOKEN_LIFE;
+      token = ENV.jwt.refresh;
       break;
   }
 
-  return sign({ user }, secret, {
-    algorithm: "HS256",
-    expiresIn: tokenLife,
+  return sign({ user }, token.secret, {
+    expiresIn: token.expire,
   });
 };
 

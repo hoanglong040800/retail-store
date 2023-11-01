@@ -16,7 +16,14 @@ export const ENV = {
   },
 
   jwt: {
-    accessSecret: process.env.JWT_ACCESS_TOKEN_SECRET || "",
-    refreshSecret: process.env.REFRESH_TOKEN_SECRET || "",
+    access: {
+      secret: process.env.ACCESS_SECRET || "",
+      expire: process.env.ACCESS_EXPIRATION_TIME || "10m",
+    },
+
+    refresh: {
+      secret: process.env.REFRESH_SECRET || "",
+      expire: process.env.REFRESH_EXPIRATION_TIME || "30d",
+    },
   },
 };
