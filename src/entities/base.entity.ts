@@ -3,7 +3,7 @@ import { Column, PrimaryGeneratedColumn } from "typeorm";
 export abstract class EBase {
   @Column({
     name: "created_at",
-    type: "datetime",
+    type: "timestamptz",
     default: () => "CURRENT_TIMESTAMP",
   })
   createdAt: Date;
@@ -17,7 +17,7 @@ export abstract class EBase {
 
   @Column({
     name: "updated_at",
-    type: "datetime",
+    type: "timestamptz",
     default: () => "CURRENT_TIMESTAMP",
   })
   updatedAt: Date;

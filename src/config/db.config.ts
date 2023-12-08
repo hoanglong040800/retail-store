@@ -2,11 +2,11 @@ import { ENV } from "constant";
 import { DataSource } from "typeorm";
 
 export const db = new DataSource({
-  type: "mssql",
+  type: "postgres",
   ...ENV.db,
 
   // settings
-  synchronize: false,
+  synchronize: true,
   logging: false,
   extra: {
     trustServerCertificate: true,
