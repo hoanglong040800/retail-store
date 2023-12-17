@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import appRoutes from "app.routes";
 import { ENV } from "constant";
 import { formatResponse } from "middlewares";
+import cors from "cors";
 
 const app = express();
 const port = ENV.server.port;
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // parse response to structure format
 app.use(formatResponse);
+
+app.use(cors());
 
 // apply all api routes
 appRoutes(app);

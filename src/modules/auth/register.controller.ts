@@ -22,6 +22,7 @@ export const registerController = async (req: IReq, res: Response) => {
 
     res.sendResponse(true);
   } catch (e) {
+    console.error(e);
     res.sendResponse(null, 500);
   }
 };
