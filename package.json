@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon -r tsconfig-paths/register ./src/app.ts",
+    "start:server": "nodemon -r tsconfig-paths/register ./src/app.ts",
+    "start:docker": "open -a Docker",
+    "dev": "yarn start:docker && (sleep 5 && yarn start:server)",
     "lint": "eslint src --fix --max-warnings=0",
     "format": "prettier src --write",
     "postinstall": "husky install"
