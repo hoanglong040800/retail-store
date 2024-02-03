@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start:server": "nodemon -r tsconfig-paths/register ./src/app.ts",
     "start:docker": "open -a Docker",
-    "dev": "yarn start:docker && (sleep 5 && yarn start:server)",
+    "dev": "nodemon -r tsconfig-paths/register ./src/app.ts",
+    "dev:docker": "yarn start:docker && (sleep 5 && yarn dev)",
     "lint": "eslint src --fix --max-warnings=0",
     "format": "prettier src --write",
     "swagger-gen": "ts-node src/config/swagger.config.ts",
