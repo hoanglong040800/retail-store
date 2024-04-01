@@ -15,6 +15,7 @@ services:
       PGDATA: /data/postgres 
     networks:
       - postgres
+    restart: always
 
 networks:
   postgres:

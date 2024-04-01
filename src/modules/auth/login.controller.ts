@@ -30,8 +30,14 @@ export const loginController = async (req: IReq, res: Response) => {
 
     const accessToken = genJwtToken(user, "access");
     const refreshToken = await genRefreshToken(user.id);
+    const returnedUser = {
+      id: user.id,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    };
 
-    res.sendResponse({ accessToken, refreshToken });
+    res.sendResponse({ accessToken, refreshToken, user: returnedUser });
   } catch (e) {
     res.sendResponse(null, 400);
   }

@@ -4,6 +4,8 @@
 
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+
     "baseUrl": "./src",
     "outDir": "./dist",
     "types": ["node", "express", "./src/interfaces/express.d.ts"],
@@ -14,5 +16,5 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "strictPropertyInitialization": false
-  }
+  },
 }
