@@ -9,7 +9,7 @@
     "dev:docker": "yarn start:docker && (sleep 5 && yarn dev)",
     "lint": "eslint src --fix --max-warnings=0",
     "format": "prettier src --write",
-    "swagger-gen": "ts-node src/config/swagger.config.ts",
+    "swagger:gen": "ts-node src/config/swagger.config.ts",
     "postinstall": "husky install"
   },
   "lint-staged": {
@@ -37,6 +37,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.2",
+    "lint-staged": "13.2.3",
     "mssql": "^10.0.1",
     "pg": "^8.11.3",
     "typeorm": "^0.3.17",
@@ -55,7 +56,6 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.1",
     "husky": "^8.0.3",
-    "lint-staged": ">=10",
     "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
     "swagger-autogen": "^2.23.7",
